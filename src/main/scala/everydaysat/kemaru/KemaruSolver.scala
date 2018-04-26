@@ -79,14 +79,14 @@ object KemaruSolver extends App {
       one = vector(value - 1)
     } yield one && and(vector.filter(_ != one).map(!_))
 
-    val constrainRange = for {
+    val constraintRange = for {
       area <- puzzle.areas.toSeq
       square <- area.toSeq
       vector = variables(square)
       i <- area.size until variablesCount
     } yield !vector(i)
 
-    val constrainAdjacency = for {
+    val constraintAdjacency = for {
       area <- puzzle.areas.toSeq
       square <- area
       squareVector = variables(square)
@@ -101,7 +101,7 @@ object KemaruSolver extends App {
       adjVector = variables(adjSquare)
     } yield !vectorEqual(squareVector, adjVector)
 
-    val allConstraints = constraintVectorOneHot ++ constraintSquareUniqueness ++ constraintKnown ++ constrainRange ++ constrainAdjacency
+    val allConstraints = constraintVectorOneHot ++ constraintSquareUniqueness ++ constraintKnown ++ constraintRange ++ constraintAdjacency
 
     solveForSatisfiability(and(allConstraints)).map(solution =>
       variables.map { case (square, vector) => square -> (vector.indexWhere(v => solution(v)) + 1) })
