@@ -56,9 +56,9 @@ object NonogramSolver extends App {
     val constraintVertical = for (x <- 0 until puzzle.width)
       yield combinations(variables.map(v => v(x)), puzzle.vertical(x))
 
-    val allContraints = constraintHorizontal ++ constraintVertical
+    val allConstraints = constraintHorizontal ++ constraintVertical
 
-    solveForSatisfiability(and(allContraints)).map(solution => variables.map(_.map(v => solution.getOrElse(v, false))))
+    solveForSatisfiability(and(allConstraints)).map(solution => variables.map(_.map(v => solution.getOrElse(v, false))))
   }
 
 
