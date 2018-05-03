@@ -13,4 +13,5 @@ Most logic based puzzles can be translated to boolean logic and solved this way,
 
 - Kemaru
 - [Nonogram](https://en.wikipedia.org/wiki/Nonogram)
+- [Sudoku](https://en.wikipedia.org/wiki/Sudoku)
 - [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
